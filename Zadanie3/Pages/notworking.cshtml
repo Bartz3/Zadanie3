@@ -1,0 +1,58 @@
+﻿
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<body>
+    <form method="POST">
+
+        <div class="form-group row mt-5 text-center">
+        <h1>Kalkulator BMI</h1>
+        <div>
+            Imię: <input name="FirstName" />
+            <span asp-validation-for="user.FirstName" class="text-danger justify-content-center"></span>
+        </div>  
+        <br/><br />
+        <div> 
+            E-mail <input name="Email" />
+        </div>
+        <br/><br />
+        <div>
+             Wiek<input name="Age" />
+             <span asp-validation-for="user.Age" class="text-danger justify-content-center"></span>
+        </div>
+        <br/> <br/>
+        <div>
+                Waga<input name="Weight" />
+        </div>
+        <br/><br/> 
+        <div>
+                Wzrost<input name="Height" />
+        </div>
+        <br /><br />
+         <div>Płeć: 
+             <select name="Gender">
+                 <option value="">-</option>
+                 <option value="Mężczyzna">Mężczyzna</option>
+                 <option value="Kobieta">Kobieta</option>
+             </select>
+        </div>
+        <br/> <br />
+        <div>Jednostka wzrostu:
+             <select name="HeightUnit">
+                 <option value="">-</option>
+                 <option value="cm">cm</option>
+                 <option value="m">m</option>
+             </select>
+        </div>   
+        <br /><br />
+         <div class=" text-center justify-content-center">
+        <button class="btn btn-primary">Zatwierdź</button>
+         </div>
+         </div>
+     
+
+    </form>
+</body>
