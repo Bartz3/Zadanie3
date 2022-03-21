@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Zadanie3.Models;
 using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace Zadanie3.Pages
 {
     public class IndexModel : PageModel
@@ -20,11 +22,16 @@ namespace Zadanie3.Pages
         }
         public IActionResult OnPost(User user)
         {
+
+            var ctx = new ValidationContext(user);
+            var results = new List<ValidationResult>();
+
+            var xd=Validator.TryValidateObject(user, ctx, results, false);
+
             if (ModelState.IsValid)
             {
-                if (user.HeightUnit == "m") user.Height *= 100;
-
-                user.Result = Math.Round((user.Weight / ((user.Height / 100) * (user.Height / 100))),2);
+                if (user.HeightUnit == "m") user.Result = Math.Round((user.Weight / ((user.Height) * (user.Height))), 2);
+                else user.Result = Math.Round((user.Weight / ((user.Height / 100) * (user.Height / 100))), 2);
 
                 return RedirectToPage("BMIpage",user);
             }

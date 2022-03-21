@@ -2,13 +2,8 @@
 @model Zadanie3.Pages.BMIpageModel
 @{
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+
+    <div class="form-group row mt-5 text-center">
 <h1>Twoje BMI wynosi: @Model.user.Result</h1>
 <div> Imię: @Model.user.FirstName 
 </div>
@@ -19,13 +14,17 @@
      <div> Wiek: @Model.user.Age
      </div>
       <br/>
-     <div> Waga: @Model.user.Weight
-     </div>      
-     <br/>
-     <div> Wzrost: @Model.user.Height
-     </div>      
+       <div> Waga: @Model.user.Weight kg </div>
+       <br/>
+    @if(Model.user.HeightUnit=="cm")
+    {
+        <div> Wzrost: @Model.user.Height cm </div>
+    }
+    else
+    {
+        <div> Wzrost: @Model.user.Height m </div>
+    }      
      <br/>
      <div> Płeć: @Model.user.Gender </div>
      <br/>
-</body>
-</html>
+     </div>
